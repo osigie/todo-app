@@ -5,7 +5,6 @@ import { useGetTodos } from "../customHooks/getTodos";
 import { useAppDispatch, useAppSelector } from "../customHooks/hooks";
 import { pg } from "../features/todoSlice";
 
-
 const PaginationComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useAppDispatch();
@@ -29,6 +28,7 @@ const PaginationComponent = () => {
     setCurrentPage(pageNumber);
     dispatch(pg(currentPosts));
   };
+  
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(todo.length / postsPerPage); i++) {

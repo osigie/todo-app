@@ -13,9 +13,11 @@ const AddTodo = () => {
   useEffect(() => {
     setState(singleTodo);
   }, [singleTodo]);
+
+
   const newTodo: TodoTypes = {
     userId: 1,
-    id: todo ? todo.length + 1 : 1,
+    id: todo ? todo.length + 1 : 201,
     title: state.title,
     completed: state.completed,
   };
@@ -24,7 +26,7 @@ const AddTodo = () => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!state.title) {
-      alert("Please input text");
+      alert("Please input a title");
       return;
     }
     if (isEdit) {

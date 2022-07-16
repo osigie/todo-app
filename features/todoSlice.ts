@@ -43,6 +43,9 @@ export const todoSlice = createSlice({
       state.todo = state.todo.sort((a: TodoTypes, b: TodoTypes) => {
         return b.id - a.id;
       });
+      state.isFiltered = state.isFiltered.sort((a: TodoTypes, b: TodoTypes) => {
+        return b.id - a.id;
+      });
       state.changePagination = true;
       toLacal(state.todo as TodoTypes[]);
     },
@@ -50,7 +53,11 @@ export const todoSlice = createSlice({
       const newState = fromLocal().filter((each: TodoTypes) => {
         return each.id !== action.payload;
       });
+      const newState2 = state.isFiltered.filter((each: TodoTypes) => {
+        return each.id !== action.payload;
+      });
       state.todo = newState;
+      state.isFiltered = newState2;
       toLacal(newState as TodoTypes[]);
     },
     beforeEdit: (state, action) => {
